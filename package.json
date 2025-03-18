@@ -1,0 +1,22 @@
+{
+  "name": "2025_node_class",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hayeong120/2025_Node_class.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hayeong120/2025_Node_class/issues"
+  },
+  "homepage": "https://github.com/hayeong120/2025_Node_class#readme",
+  "description": "",
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}
