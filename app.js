@@ -7,9 +7,9 @@ const app = express();
 app.use(express.json());
 
 // 라우팅 설정
-app.post('/swag', (req, res) => {
-    // 클라이언트에게 응답내용 전송
-    res.send(req.body);
+app.get('/swag/:person', (req, res) => {
+    const person = req.params.person;
+    res.status(200).send(person);
 });
 
 // 서버가 3000번 포트에서 요청을 기다리도록 설정
