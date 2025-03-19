@@ -1,4 +1,4 @@
-// express 모듈을 불러옴
+// express 모듈을 불러오기
 const express = require('express');
 
 //Express 애플리케이션을 생성
@@ -6,20 +6,11 @@ const app = express();
 
 app.use(express.json());
 
+// 라우팅 파일 불러오기
+const swagRoutes = require('./routes/swag');
+
 // 라우팅 설정
-app.get('/swag', (req, res) => {
-    res.status(200).send('Get swag');
-});
-
-app.post('/swag', (req, res) => {
-    res.status(200).send('Post swag');
-});
-
-
-app.get('/swag/:person', (req, res) => {
-    const person = req.params.person;
-    res.status(200).send(person);
-});
+app.use('/swag', swagRoutes);
 
 // 서버가 3000번 포트에서 요청을 기다리도록 설정
 app.listen(3000, () => {
