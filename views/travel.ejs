@@ -11,7 +11,7 @@
 	<ul>
 		<% travelList.forEach(travel=> {%>
 			<li>
-				<%= travel.name %>
+				<a href="/travel/<%= travel.id %>"><%= travel.name %></a>
 			</li>
 			<% }) %>
 	</ul>
