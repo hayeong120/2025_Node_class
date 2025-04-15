@@ -2,11 +2,12 @@ const express = require('express');
 const db = require('../db');
 const router = express.Router();
 
+// 게시글 추가 페이지
 router.get('/add', (req, res) => {
     res.render('addTravel');
 });
 
-// 여행지 목록 가져오기
+// 여행지 전체 목록 가져오기
 router.get('/', (req, res) => {
     const _query = 'SELECT id, name FROM travelList';
     db.query(_query, (err, results) => {
@@ -39,7 +40,7 @@ router.get('/:id', (req, res) => {
     });
 });
 
-// 
+// 여행지 추가 
 router.post('/', (req, res) => {
     const { name } = req.body;
     const _query = 'INSERT INTO travelList (name)  VALUE (?)';
