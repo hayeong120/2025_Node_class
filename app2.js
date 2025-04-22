@@ -1,28 +1,28 @@
 const express = require('express');
 const path = require('path');
-const mysql = require('mysql2');
-const dotenv = require('dotenv');
 const methodOverride = require('method-override');
+const travelRouter = require('./routes/travel');
 
-dotenv.config();
 const app = express();
+const PORT = 3000;
 
 app.use(methodOverride('_method'));
 app.use(express.json());
-app.use(express.urlencoded({extended: true}));
+app.use(express.urlencoded({ extended: true }));
 
 app.set('view engine', 'ejs');
-// __dirname : 현재 디렉토리의 절대경로
-// path.join : 경로 지정자를 운영체제에 맞추어 줌
 app.set('views', path.join(__dirname, 'views'));
 
-// 라우팅 파일 불러오기
-const travelRouter = require('./routes/travel');
+app.get('/', (req, res) => {
+    res.render('home');
+});
 
-app.use('/travel', travelRouter, (req, res) => {
+app.use('/travel', travelRouter);
+
+app.use((req, res) => {
     res.status(404).send('404 not found');
 });
 
-app.listen(3000, () => {
+app.listen(PORT, () => {
     console.log('서버가 http://localhost:3000 에서 실행 중입니다.');
 });
