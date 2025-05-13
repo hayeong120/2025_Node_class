@@ -19,23 +19,8 @@ router.get('/', async (req, res) => {
     }
 });
 
-// 여행지 페이지 이동
-router.get('/:id', async (req, res) => {
-    const travelId = req.params.id;
-    try {
-        const _query = 'SELECT * FROM travelList WHERE id = ?';
-        const [results] = await db.query(_query, [travelId]);
-        if (results.length === 0) {
-            res.status(404).send('여행지를 찾을 수 없습니다.');
-            return;
-        }
-        const travel = results[0];
-        res.render('travelDetail', { travel });
-    } catch (err) {
-        console.error('데이터베이스 쿼리 실패 : ', err);
-        res.status(500).send('Internal Server Error');
-    }
-});
+// 게시글 추가 페이지로 이동
+router.get('/add', travelController.addTravel);
 
 // 여행지 추가 
 router.post('/', async (req, res) => {
